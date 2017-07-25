@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+
+  <script src="script.js"></script>
+
+  <script>
+    window.onload = function () {
+      let figure = document.getElementById('figure');
+      let a = document.getElementById('a');
+      let b = document.getElementById('b');
+      let c = document.getElementById('c');
+      let calc = document.getElementById('calculateArea');
+
+      figure.selectedIndex = -1;
+      calc.setAttribute('disabled', 'disabled');
+
+      figure.addEventListener('change', function () {
+        calc.removeAttribute('disabled');
+        if (figure.options[figure.selectedIndex].value === 'rectangle'){
+          c.setAttribute('disabled', 'disabled');
+          a.setAttribute('placeholder', 'a');
+          b.removeAttribute('disabled');
+          b.setAttribute('placeholder', 'b');
+        }
+        if (figure.options[figure.selectedIndex].value === 'circle'){
+          c.setAttribute('disabled', 'disabled');
+          b.setAttribute('disabled', 'disabled');
+          a.setAttribute('placeholder', 'radius');
+        }
+        if (figure.options[figure.selectedIndex].value === 'triangle'){
+          a.setAttribute('placeholder', 'a');
+          b.removeAttribute('disabled');
+          b.setAttribute('placeholder', 'b');
+          c.removeAttribute('disabled');
+          c.setAttribute('placeholder', 'c');
+        }
+      });
+
+
+      calc.addEventListener('click', function () {
+        console.log('Задание 2');
+        console.log(calculateArea(figure.options[figure.selectedIndex].value,
+          parseInt((a.value)), parseInt(b.value), parseInt(c.value)));
+      });
+    }
+  </script>
+
+  <title>Home Work 1</title>
+</head>
+<body>
+
+  <p>Задание 2</p>
+
+  <div class="task2">
+    <select name="figure" id="figure">
+      <option value="rectangle">Прямоугольник</option>
+      <option value="circle">Круг</option>
+      <option value="triangle">Треугольник</option>
+    </select>
+    <input type="number" id="a">
+    <input type="number" id="b">
+    <input type="number" id="c">
+    <button id="calculateArea">Расчитать</button>
+  </div>
+
+</body>
+</html>
