@@ -157,11 +157,11 @@ for (let i = 0; i < 10; i++){
         resolve(xhr.responseText);
       }
       else {
-        reject(Error(xhr.statusText));
+        reject(xhr.statusText);
       }
     };
     xhr.onerror = function() {
-      reject(Error("Network Error"));
+      reject("Network Error");
     };
     xhr.send();
   }));
@@ -176,3 +176,24 @@ for (let i = 0; i < 10; i++){
     error => console.log(error)
   );
 }
+
+
+
+/********************************************************************
+ *
+ *  Задание 4
+ *
+ ********************************************************************/
+
+
+function* generator() {
+  let abc = {};
+  abc.a = yield 'a';
+  abc.b = yield 'b';
+  abc.c = yield 'c';
+  return abc;
+}
+
+let gen = generator();
+
+console.log(gen.next(prompt(gen.next(prompt(gen.next(prompt(gen.next().value, 'a')).value, 'b')).value, 'c')).value);
