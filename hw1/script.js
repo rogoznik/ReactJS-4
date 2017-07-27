@@ -127,7 +127,7 @@ let mngr = new Manager('manager', 20, '01.01.01', 10, 'qweqweqwe');
 
 // dev.setManager(mngr);
 mngr.addDeveloper(dev);
-console.log('Задание 3');
+console.log('\nЗадание 3');
 console.log(dev.displayInfo());
 console.log(mngr.displayInfo());
 console.log(dev);
@@ -139,3 +139,40 @@ console.log(dev);
 console.log(mngr);
 
 
+
+/********************************************************************
+ *
+ *  Задание 5
+ *
+ ********************************************************************/
+
+let indx = 1;
+let arrPromise = [];
+for (let i = 0; i < 10; i++){
+  arrPromise.push(new Promise((resolve, reject) => {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://jsonplaceholder.typicode.com/users/'+indx);
+    xhr.onload = function() {
+      if (xhr.status == 200) {
+        resolve(xhr.responseText);
+      }
+      else {
+        reject(Error(xhr.statusText));
+      }
+    };
+    xhr.onerror = function() {
+      reject(Error("Network Error"));
+    };
+    xhr.send();
+  }));
+  indx++;
+}
+
+console.log('\nЗадание 5');
+
+for (let i = 0; i < 10; i++){
+  arrPromise[i].then(
+    result => console.log(JSON.parse(result)),
+    error => console.log(error)
+  );
+}
