@@ -196,4 +196,6 @@ function* generator() {
 
 let gen = generator();
 
+console.log('\nЗадание 4');
+
 console.log(gen.next(prompt(gen.next(prompt(gen.next(prompt(gen.next().value, 'a')).value, 'b')).value, 'c')).value);
