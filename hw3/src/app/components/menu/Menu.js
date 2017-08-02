@@ -13,7 +13,7 @@ export default class Menu extends React.Component {
     ];
 
     return (
-      <div className="menu">
+      <div className="menu left">
         <MenuItem items={menuItems}/>
       </div>
     );

@@ -14,15 +14,16 @@ export default class MainPage extends React.Component {
       <div className="container">
         <div className="main-page">
           <WindowLogin/>
-          <header className="header">
-            <BtnLogin/>
+          <header className="page-header padding-left_15 padding-right_15">
+            <nav className="navbar navbar-default clearfix">
+              <Menu/>
+              <BtnLogin/>
+            </nav>
           </header>
-          <nav className="nav-bar">
-            <Menu/>
-          </nav>
+
           <Content/>
-          <footer className="footer">
-            <nav className="nav-bar">
+          <footer className="panel-footer">
+            <nav className="navbar navbar-default">
               <Menu/>
             </nav>
           </footer>

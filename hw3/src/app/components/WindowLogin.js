@@ -14,7 +14,7 @@ export default class WindowLogin extends React.Component {
               <h4 className="modal-title">Вход</h4>
             </div>
             <div className="modal-body">
-              <form action="" method="POST" className="clearfix form-login center-block">
+              <form action="#" method="POST" className="clearfix form-login center-block">
                 <div className="input-wrapper margin-bottom_10">
                   <input type="text" name="userLogin" id="userLogin" placeholder="Логин"/>
                 </div>

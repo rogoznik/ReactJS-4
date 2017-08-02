@@ -4,7 +4,7 @@ export default class Content extends React.Component {
 
   render(){
     return (
-      <div className="content">asdasd</div>
+      <div className="content">Контент</div>
     );
   }
 }
