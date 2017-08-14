@@ -9,7 +9,6 @@ export default class Post extends React.Component {
     this.state = {
       showBody: false
     };
-
   }
 
   bodyShow = () => {
@@ -21,6 +20,11 @@ export default class Post extends React.Component {
     delPost(this.props.id);
   };
 
+  editPost = () => {
+    $('#myModalLabel').html(this.props.title);
+    $('#post-body').val(this.props.body);
+  };
+
   render() {
     let postBody;
     if (this.state.showBody) {
@@ -30,6 +34,7 @@ export default class Post extends React.Component {
               {this.props.body}
             </div>
             <button className="btn btn-danger" onClick={this.deletePost}>Удалить</button>
+            <button className="btn btn-success" id="btn-edit-post" data-postId={this.props.id} data-toggle="modal" data-target="#myModal" onClick={this.editPost}>Редактировать</button>
           </div>
       )
     }

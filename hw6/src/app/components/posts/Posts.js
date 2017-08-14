@@ -3,6 +3,7 @@ import React from 'react';
 import { addPost, fetchPosts } from '../../actions/postsActions';
 import PostList from './PostList';
 import PostStore from '../../stores/postStore';
+import EditPost from './EditPost';
 
 export default class Posts extends React.Component {
   constructor() {
@@ -46,6 +47,7 @@ export default class Posts extends React.Component {
             Добавить пост
           </button>
           <PostList posts={this.state.posts} />
+          <EditPost/>
         </div>
     );
   }

@@ -5,7 +5,8 @@ import {
   ADD_POST,
   FETCH_POSTS_START,
   FETCH_POSTS_END,
-  DEL_POST
+  DEL_POST,
+  EDIT_POST
 } from '../constants/postsConstants';
 
 import dispatcher from '../dispatcher';
@@ -46,10 +47,19 @@ class PostStore extends EventEmitter {
   };
 
   delPost = (id) => {
-    console.log(id);
     for (let i = 0; i < this.posts.length; i++) {
       if (this.posts[i].id === id) {
         this.posts.splice(i, 1);
+        break;
+      }
+    }
+    this.change();
+  };
+
+  savePost = ({id, body}) => {
+    for (let i = 0; i < this.posts.length; i++) {
+      if (this.posts[i].id === id) {
+        this.posts[i].body = body;
         break;
       }
     }
@@ -72,6 +82,10 @@ class PostStore extends EventEmitter {
       }
       case DEL_POST: {
         this.delPost(action.payload);
+        break;
+      }
+      case EDIT_POST: {
+        this.savePost(action.payload);
         break;
       }
     }
